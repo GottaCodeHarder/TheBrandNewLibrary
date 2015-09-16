@@ -1,6 +1,6 @@
 
 
-char ocupa 1 byte, que son 8 bits[0 0 0 0 0 0 0 0], que vol dir que te un rang de 127 a -128. el unsigned char te un rang de 0 a 256.
+char ocupa 1 byte, que son 8 bits[0 0 0 0 0 0 0 0], que vol dir que te un rang de 127 a -128. el unsigned char te un rang de 0 a 255.
 [Al ser signed s'utilitza el primer bit per dir si es positiu -0- o negatiu -1-]
 
 Transformar un int a una cadena char de la taula ASCII:
@@ -10,12 +10,13 @@ char transformToChar(int) //entra un NUMERO int, surt un NUMERO en char.
 	return 0 + 48;
 }
 
-int ocupa(normalment) 4 bytes, que son 32 bits, que vol dir que te un rang de 2.147.483.648, que es un rang molt gran.
-short(short int) es un enter petit, 2 bytes, que son 16 bits, que te un rang de 65.535 si es unsigned, y amb signe es de +32.768 a -32.76X.
+int ocupa(normalment) 4 bytes, que son 32 bits, que vol dir que te un rang de -2.147.483.648 +2.147.483.647, que es un rang molt gran.
+short(short int) es un enter petit, 2 bytes, que son 16 bits, que te un rang de 65.535 si es unsigned, y amb signe es de -32.768 a +32.767.
 long(long int) es un enter molt gran, 8 bytes, que son 64 bits, amb un rang molt gran.
 
 float (representa decimals), te una mateixa informacio que podria tenir un int o un char en 0 y 1. Té 4 bytes amb un rang de 1.17549^-38
 double es el germa gran del anterior. Té 8 bytes.
+long double es el germa gegant.
 
 bool no es una variable, té 1 byte. Encara que només s'utilitza 1 bit (1 y 0 per dir true or false), es perque l'ordinador esta preparat per gestionar bytes.
 	Té un valor numeric.
@@ -41,7 +42,7 @@ void es fa servir per 3 coses a C.Vol dir "nada". Retorna res de la funció. Es u
 
 Un doble punter agafa (senyala) la direcció d'un punter a una cosa.
 
-DEURES: Fer un programa que fagi printf dun char. Mirar llibreria Limits.h, serveix per veure els limits de memoria en aquell moment. FTL_MIN float minim representable.
+DEURES: Fer un programa que fagi printf dun char. Mirar llibreria Limits.h, serveix per veure els limits de memoria en aquell moment. FLT_MIN float minim representable.
 		Quants bytes te el nostre char y el nostre long.Confirmar tamany d'un punter.
 
 Si escrius un 44, y no li especifiques que es, com pot ser qualsevol numero, ell dira que es un int.
@@ -60,14 +61,14 @@ Si escrius un 44ul el ordinador el interpretara com un unsigned long.
 
 enum enumerador. Es una cosa per fer mes facil la programacio, fa les coses llegibles. 
 enum items{
-	DOUBLE_CORDA; // Posicio 0
+	DOUBLE_CORDA, // Posicio 0
 	BOTES,		  // Posicio 1
 	GANXO,        // Posicio 2
 	ESCOPETA      // Posicio 4
 };
 
 enum items{
-	DOUBLE_CORDA = 10; // Posicio 10
+	DOUBLE_CORDA = 10, // Posicio 10
 	BOTES,             // Posicio 11
 	GANXO = -15;	   // Posicio -15
 	ESCOPETA;		   // Posicio -14
