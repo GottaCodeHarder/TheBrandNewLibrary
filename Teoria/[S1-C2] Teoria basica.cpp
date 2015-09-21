@@ -5,9 +5,9 @@ char ocupa 1 byte, que son 8 bits[0 0 0 0 0 0 0 0], que vol dir que te un rang d
 
 Transformar un int a una cadena char de la taula ASCII:
 
-char transformToChar(int) //entra un NUMERO int, surt un NUMERO en char.
+char transformToChar(int a) //entra un NUMERO int, surt un NUMERO en char.
 {
-	return 0 + 48;
+	return a + 48; // 0 =< a <= 9
 }
 
 int ocupa(normalment) 4 bytes, que son 32 bits, que vol dir que te un rang de -2.147.483.648 +2.147.483.647, que es un rang molt gran.
@@ -41,9 +41,6 @@ el primer char y tel llegira com un char.
 void es fa servir per 3 coses a C.Vol dir "nada". Retorna res de la funció. Es un punter que no sabem quin tipus es.
 
 Un doble punter agafa (senyala) la direcció d'un punter a una cosa.
-
-DEURES: Fer un programa que fagi printf dun char. Mirar llibreria Limits.h, serveix per veure els limits de memoria en aquell moment. FLT_MIN float minim representable.
-		Quants bytes te el nostre char y el nostre long.Confirmar tamany d'un punter.
 
 Si escrius un 44, y no li especifiques que es, com pot ser qualsevol numero, ell dira que es un int.
 Si escrius un 0.1, y no especifiques que es, com pot ser float o double, ell dira que es un double. (sempre el pitjor cas)

@@ -6,6 +6,29 @@ using namespace std;
 /* printf (char "%c") (int "%i" "%d") (float "%f") (string "%s") */
 
 
+//// TEST NUMERO 0 : Reventando variables ////==============================
+
+int main()
+{
+	cout << "//// TEST NUMERO 0 : Reventando variables" << endl;
+	char a = 300;
+	bool b = 45;
+	printf("%c \n", a);
+	printf("%i \n", a);
+
+	if (b == 1)
+	{
+		cout << "b da true" << endl;
+	}
+
+	if (b != 1)
+	{
+		cout << b << endl;
+	}
+	system("PAUSE");
+}
+
+
 //// TEST NUMERO 1 : Transformaciones WTF ////==============================
 /*
 char transformToChar(int nom) //entra un NUMERO int, surt un NUMERO en char.
@@ -103,36 +126,33 @@ int main()
 
 
 //// TEST NUMERO 5 : LIMITES //=================================================
-
+/*
 int main()
 {
-
+	
 	cout << "//// TEST NUMERO 5 : LIMITES\n";
 	printf("\nThe number of bits in a byte: %d\n", CHAR_BIT);
 
-	printf("\nThe minimum value of SIGNED CHAR = %d\n", SCHAR_MIN);
+	printf("\nThe minimum value of SIGNED CHAR = %d\n", SCHAR_MIN); // 1 BYTE
 	printf("The maximum value of SIGNED CHAR = %d\n", SCHAR_MAX);
 	printf("The maximum value of UNSIGNED CHAR = %d\n", UCHAR_MAX);
 
-	printf("\nThe minimum value of SHORT INT = %d\n", SHRT_MIN);
+	printf("\nThe minimum value of SHORT INT = %d\n", SHRT_MIN); // 2 BYTES
 	printf("The maximum value of SHORT INT = %d\n", SHRT_MAX);
 	printf("The maximum value of UNSIGNED SHORT INT = %d\n", USHRT_MAX);
 
-	printf("\nThe minimum value of INT = %d\n", INT_MIN);
+	printf("\nThe minimum value of INT = %d\n", INT_MIN); // 4 BYTES
 	printf("The maximum value of INT = %d\n", INT_MAX);
 	printf("The maximum value of UNSIGNED INT = %d\n", UINT_MAX);
 
-	printf("\nThe minimum value of CHAR = %d\n", CHAR_MIN);
-	printf("The maximum value of CHAR = %d\n", CHAR_MAX);
-	printf("The maximum value of UNSIGNED CHAR = %d\n", UCHAR_MAX);
-
-	printf("\nThe minimum value of LONG = %ld\n", LONG_MIN);
+	printf("\nThe minimum value of LONG = %ld\n", LONG_MIN); // 4 BYTES (que tindrien que ser 8 bytes)
 	printf("The maximum value of LONG = %ld\n", LONG_MAX);
 	printf("%s", "Microsoft Visual Studio uses 4 byte Compiler. Dissapointed.\n");
 
-	printf("\nThe minimum value of FLOAT = %lf\n", FLT_MIN);
+	printf("\nThe minimum value of FLOAT = %lf\n", FLT_MIN); // 4 BYTES
 	printf("The maximum value of FLOAT = %lf\n\n\n", FLT_MAX);
 
 
 	system("PAUSE");
 }
+*/
