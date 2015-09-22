@@ -91,4 +91,4 @@ if (*p1 == 5)
 
 p2 = 5; En comptes de posar 5 on estava apuntant, es posa un 5 a si mateixa.
 
-DEURES fer un swap que intercanvii la direccio a on estan apuntant de dos punters enters(int)
+DEURES fer un swap que intercanvii la direccio a on estan apuntant de dos punters enters(int) i fer un strcpy
