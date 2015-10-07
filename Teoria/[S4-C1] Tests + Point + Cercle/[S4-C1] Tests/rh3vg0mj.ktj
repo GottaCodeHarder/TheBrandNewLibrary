@@ -1,4 +1,5 @@
 #include <iostream>
+#include <Point.h>
 using namespace std;
 
 void swap(int* c, int* d)
@@ -96,9 +97,10 @@ public:
 		a.y = 0;
 	}
 
-	void Negate(Point a)
+	Point Negate(Point a)
 	{
 		a.x = -a.x;
 		a.y = -a.y;
+		return a;
 	}
 };

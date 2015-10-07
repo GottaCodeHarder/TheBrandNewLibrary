@@ -1,0 +1,23 @@
+#ifndef __CERCLE_H__
+#define __CERCLE_H__
+
+class Cercle
+{
+public:
+	float radi;
+
+	const Cercle& operator = (const Cercle& a);
+
+	bool operator == (const Cercle& a) const;
+	bool operator != (const Cercle& a) const;
+
+	const Cercle& operator += (const Cercle& a);
+	const Cercle& operator -= (const Cercle& a);
+
+	Cercle operator + (const Cercle& a) const;
+	Cercle operator - (const Cercle& a) const;
+
+	float GetArea() const;
+};
+
+#endif
