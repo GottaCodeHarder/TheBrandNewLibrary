@@ -1,6 +1,7 @@
 #ifndef __DYNARRAY_H__
 #define __DYNARRAY_H__
 #include "defs.h" // MACROS definies a dintre
+#define MEMORY_CHUNK 16
 
 template <class DATA>
 class DynArray
@@ -30,9 +31,37 @@ public:
 		data[numberElements + 1] = ultim;
 	}
 
-	// constructor que rebi memoria per reservar capacitat (fer un new), at(), capacity(), size(), clear() es un memset, bool empty() et torna true si esta buida
+	DynArray ReserveCapacity(int a)
+	{
+		data = new DATA[a];
+		memoryCapacity = a;
+		return data;
+	}
 
-	~DynArray(){ if (data!= NULL) delete[] data; } // Si no poses el if, aixo pot petar de mala manera (Run-time error)
+	void GetCapacity() const
+	{
+		return memoryCapacity;
+	}
+
+	void GetSize() const
+	{
+		return numberElements;
+	}
+
+	bool Empty() const
+	{
+		return (true == 0);
+	}
+
+	void Clear()
+	{
+		numberElements = 0;
+	}
+
+	// new y delete reserven memoria, no la toquen (posar valors a 0).
+	// constructor que rebi memoria per reservar capacitat (fer un new), at(), capacity(), size(), clear(), bool empty() et torna true si esta buida
+
+	~DynArray(){ if (data != NULL) delete[] data; } // Si no poses el if, aixo pot petar de mala manera (Run-time error)
 };
 
 #endif
