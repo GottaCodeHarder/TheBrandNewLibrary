@@ -38,12 +38,23 @@ public:
 		return data;
 	}
 
-	void GetCapacity() const
+	DynArray& At(const uint &position) const
+	{
+		if (position >= numberElements)
+			return data[position];
+	}
+
+	const DynArray c_str() const
+	{
+		return data;
+	}
+
+	uint GetCapacity() const
 	{
 		return memoryCapacity;
 	}
 
-	void GetSize() const
+	uint GetSize() const
 	{
 		return numberElements;
 	}
