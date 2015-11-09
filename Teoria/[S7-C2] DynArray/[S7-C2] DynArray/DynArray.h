@@ -1,6 +1,6 @@
 #ifndef __DYNARRAY_H__
 #define __DYNARRAY_H__
-#include "defs.h" // MACROS definies a dintre
+#include "defs.h" // MACROS definides a dintre
 #define MEMORY_CHUNK 16
 
 template <class DATA>
@@ -23,24 +23,37 @@ public:
 		memcpy(data, Array.data, Array.numberElements*sizeof(DATA));
 	}
 
+	DynArray(DATA& mem_res)
+	{
+
+	}
+
+	~DynArray(){ if (data != NULL) delete[] data; } // Si no poses el if, aixo pot petar de mala manera (Run-time error)
+
 	void Pushback(const DATA& ultim) // Rebre nomes una dada
 	{
 		if (numberElements == memoryCapacity)
+		{
+			DATA* tmp = data;
 			data = new DATA[memoryCapacity + MEMORY_CHUNK];
-
-		data[numberElements + 1] = ultim;
+			memcpy(data, tmp, num_elements*sizeof(DATA));
+			delete[] tmp;
+		}
+		
+		data[numberElements++] = ultim;
 	}
 
-	DynArray ReserveCapacity(int a)
+	bool ReserveCapacity(int a)
 	{
-		data = new DATA[a];
+		if (a < memoryCapacity)
+			return false;
 		memoryCapacity = a;
-		return data;
+		return true;
 	}
 
 	DynArray& At(const uint &position) const
 	{
-		if (position >= numberElements)
+		if (position < numberElements)
 			return data[position];
 	}
 
@@ -61,7 +74,7 @@ public:
 
 	bool Empty() const
 	{
-		return (true == 0);
+		return (numberElements == 0);
 	}
 
 	void Clear()
@@ -70,9 +83,7 @@ public:
 	}
 
 	// new y delete reserven memoria, no la toquen (posar valors a 0).
-	// constructor que rebi memoria per reservar capacitat (fer un new), at(), capacity(), size(), clear(), bool empty() et torna true si esta buida
-
-	~DynArray(){ if (data != NULL) delete[] data; } // Si no poses el if, aixo pot petar de mala manera (Run-time error)
+	// operador [],  operador =, pop_back (en el moment que el treus, l'estas borrant), shrink_to_fit() (si ens sobra memoria, hem de destruir el lo que sobra, fer un new), flip ( ABCDE => EDCBA ), insert (pos, data) (ABCDE => ABXCDE)
 };
 
 #endif
