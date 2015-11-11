@@ -57,11 +57,6 @@ public:
 			return data[position];
 	}
 
-	const DynArray c_str() const
-	{
-		return data;
-	}
-
 	uint GetCapacity() const
 	{
 		return memoryCapacity;
@@ -82,6 +77,45 @@ public:
 		numberElements = 0;
 	}
 
+	bool PopBack(DATA& value)
+	{
+		if (numberElements > 0)
+		{
+			value = data[--numberElements];
+			return true;
+		}
+		return false;
+	}
+
+	const DATA& operator [] (uint position) const
+	{
+		assert(position < numberElements);
+		return data[position];
+	}
+
+	void ShrinkToFit()
+	{
+		if (memoryCapacity != numberElements)
+		{
+			DATA* tmp = data;
+			data = new DATA[numberElements];
+			memcpy(data, tmp, numberElements * sizeof(DATA));
+			delete[] tmp;
+		}
+	}
+
+	void Flip()
+	{
+
+	}
+
+	void Insert(uint position, DATA info)
+	{
+		numberElements++;
+		DATA* tmp = data;
+
+		// Code
+	}
 	// new y delete reserven memoria, no la toquen (posar valors a 0).
 	// operador [],  operador =, pop_back (en el moment que el treus, l'estas borrant), shrink_to_fit() (si ens sobra memoria, hem de destruir el lo que sobra, fer un new), flip ( ABCDE => EDCBA ), insert (pos, data) (ABCDE => ABXCDE)
 };
