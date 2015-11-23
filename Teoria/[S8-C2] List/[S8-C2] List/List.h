@@ -21,7 +21,14 @@ private:
 
 public:
 	Node& GetStart() const {return start;}
-	
+	Node& SetEnd()
+	{
+		if (start != NULL)
+			Node<TYPE>* tmp = start, return NULL;
+		while (tmp->next != NULL)
+			tmp = tmp->next;
+		return tmp;
+	}
 	int Count();
 
 	void PushBack(const TYPE& item)
@@ -74,7 +81,20 @@ public:
 
 	Node& GetBack() const;
 	void PushFront();
-	Node& PopBack(); // Retorna el que s'ha eliminat
+
+	bool PopBack(TYPE& var)
+	{
+		if (GetStart() != NULL)
+		{
+			Node<TYPE>* tmp = SetEnd();
+			tmp->prev->next = NULL;
+			var = tmp->data;
+			delete tmp;
+			return true;
+		}
+		return false;
+	}
+
 	Node& PopFront();
 	Insert(); // On vulguis fiques un node
 	Remove(); // Eliminar el node que vulguis
