@@ -17,20 +17,52 @@ class List
 {
 private:
 
+	unsigned int size;
 	Node<TYPE>* start = NULL; // No fa falta end
 
 public:
-	Node& GetStart() const {return start;}
+	// Constructor
+	List()
+	{
+		size = 0; 
+	}
+	
+	// Gets & Sets
+	uint GetSize() const { return size; }
+
+	Node& GetStart() const { return start; }
+
+	Node& GetBack() const
+	{
+		if (start != 0)
+		{
+			Node<TYPE>* last = start;
+
+			while (last->next != NULL)
+			{
+				last = last->next;
+			}
+		}
+		return last;
+	}
+
+	void AddSize() { size++; }
+
+	void AddSize(int a) { size += a; }
+
 	Node& SetEnd()
 	{
 		if (start != NULL)
 			Node<TYPE>* tmp = start, return NULL;
 		while (tmp->next != NULL)
+		{
 			tmp = tmp->next;
+		}
 		return tmp;
 	}
-	int Count();
+	void SetSize(int a) { size = a; }
 
+	// Metodes
 	void PushBack(const TYPE& item)
 	{
 		Node<TYPE>* newNode = new Node<TYPE>(item);
@@ -45,8 +77,25 @@ public:
 			{
 				tmp = tmp->next;
 			}
-			tmp // <======================
+			tmp; // <======================
 		}
+		size++;
+	}
+
+	void PushFront()(const TYPE& item)
+	{
+		Node<TYPE>* newNode = new Node<TYPE>(item);
+		if (start == NULL)
+		{
+			start = newNode;
+		}
+		else
+		{
+			start->prev = newNode;
+			newNode->next = start;
+			start = newNode;
+		}
+		size++;
 	}
 
 	bool Empty() const
@@ -64,23 +113,21 @@ public:
 			tmp = start;
 		}
 		start = NULL;
+		size = 0;
 	}
 
 	int Size() const
 	{
-		Node<TYPE>* tmp = start;
+		/*Node<TYPE>* tmp = start;
 		int size = 0;
 
 		while (tmp)
 		{
 			size++;
 			tmp = tmp->next;
-		}
+		}*/
 		return size;
 	}
-
-	Node& GetBack() const;
-	void PushFront();
 
 	bool PopBack(TYPE& var)
 	{
@@ -95,11 +142,56 @@ public:
 		return false;
 	}
 
-	Node& PopFront();
-	Insert(); // On vulguis fiques un node
-	Remove(); // Eliminar el node que vulguis
+	Node& PopFront()
+	{
+		Node<TYPE> node = new Node<TYPE>;
+		node = start;
+		return node;
+	}
 
-	~List(){}
+	bool Insert(TYPE data, unsigned int pos) // On vulguis fiques un node
+	{
+		bool ret = false;
+		Node<TYPE> node = new Node<TYPE>(data);
+		if (start != NULL)
+		{
+			if (pos > size)
+				return ret;
+			node->start;
+			for (int a = 0; a < pos; a++)
+			{
+				node = node->next;
+			}
+			node->prev->next = node;
+			node->next->prev = node;
+		}
+		return ret;
+	}
+
+	bool Remove(uint position) // Eliminar el node que vulguis
+	{
+		bool ret = false;
+		if (position > size)
+		{
+			return ret;
+		}
+		if (start != NULL)
+		{
+			Node<TYPE>* find = start;
+			for (int a = 0; a < position; a++)
+			{
+				find = find->next;
+			}
+			if (find->next != NULL)
+				find->next->prev = find->prev;
+			else find->prev->next = NULL;
+			if (find->prev != NULL)
+				find->prev->next = find->next;
+			else start = start->next;
+			RELEASE(find);
+		}
+	}
+
+	~List(){};
 };
-
 #endif
