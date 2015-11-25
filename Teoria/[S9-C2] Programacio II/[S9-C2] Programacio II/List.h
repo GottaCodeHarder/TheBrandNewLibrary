@@ -82,7 +82,7 @@ public:
 		size++;
 	}
 
-	void PushFront()(const TYPE& item)
+	void PushFront(const TYPE& item)
 	{
 		Node<TYPE>* newNode = new Node<TYPE>(item);
 		if (start == NULL)
@@ -131,7 +131,7 @@ public:
 
 	bool PopBack(TYPE& var)
 	{
-		if (GetStart() != NULL)
+		if (start != NULL)
 		{
 			Node<TYPE>* tmp = SetEnd();
 			tmp->prev->next = NULL;
@@ -192,6 +192,7 @@ public:
 		}
 	}
 
-	~List(){};
+	~List(){}
 };
+
 #endif
