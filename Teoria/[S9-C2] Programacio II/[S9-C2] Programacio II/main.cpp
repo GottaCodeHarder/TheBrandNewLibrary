@@ -7,10 +7,13 @@ using namespace std;
 
 int main()
 {
-	int test = 10;
+	int test = 20;
 	DynArray<int> arrayTest;
 	Queue<int> queueTest;
 	
+	arrayTest.Pushback(1);
+
+
 	system("PAUSE");
 	return 0;
 }

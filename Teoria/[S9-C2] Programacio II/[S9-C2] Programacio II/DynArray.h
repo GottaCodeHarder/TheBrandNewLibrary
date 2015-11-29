@@ -36,7 +36,7 @@ public:
 		{
 			DATA* tmp = data;
 			data = new DATA[memoryCapacity + MEMORY_CHUNK];
-			memcpy(data, tmp, num_elements*sizeof(DATA));
+			memcpy(data, tmp, numberElements*sizeof(DATA));
 			delete[] tmp;
 		}
 	
