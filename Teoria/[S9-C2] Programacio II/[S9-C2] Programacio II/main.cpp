@@ -10,10 +10,12 @@ int main()
 	int test = 20;
 	DynArray<int> arrayTest;
 	Queue<int> queueTest;
+
+	queueTest.PushB(test);
 	
-	arrayTest.Pushback(1);
+	//queueTest.Empty();
 
-
+	printf("%i \n", queueTest);
 	system("PAUSE");
 	return 0;
 }

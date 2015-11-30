@@ -4,14 +4,22 @@
 #include "List.h"
 
 template <class TYPE>
-class Stack : public List<TYPE> // Es Array Dynamic
+class Stack 
 {
-	List<TYPE> list;
+	uint numberElements;
+	uint memoryCapacity;
+	TYPE* data;
 public:
 
-	Node<TYPE>& Pop()
+	Stack() : memoryCapacity(MEMORY_CHUNK)
 	{
-		return start;
+		data = new TYPE[memoryCapacity];
+	}
+
+	Stack(uint size)
+	{
+		memoryCapacity = MEMORY_CHUNK * ((size / MEMORY_CHUNK) + 1);
+		data = new TYPE[memoryCapacity];
 	}
 
 	void Push(Node& info)
@@ -29,19 +37,47 @@ public:
 		size++;
 	}
 
-	Node<TYPE>& Peek(uint numb) const
+	bool Empty()
 	{
-		Node<TYPE> locator = new Node<TYPE>;
-		int score;
-		if (numb == 1 or numb == NULL)
-			score = size;
-		else score -= numb - 1;
-		node = start;
-		for (int i = 0; i < score; i++)
+		return numberElements == 0;
+	}
+
+	uint Size()
+	{
+		return numberElements;
+	}
+
+	void PushBack(const TYPE& element)
+	{
+		if (numberElements == memoryCapacity)
 		{
-			node->next;
+			memoryCapacity += MEMORY_CHUNK;
+			uint newSize = memoryCapacity;
+			TYPE* tmp = new TYPE[newSize];
+
+			memcpy(tmp, data, numberElements * sizeof(TYPE));
+			delete[] data;
+			data = tmp;
 		}
-		return node;
+		data[numberElements++] = element;
+	}
+
+	bool PopBack(TYPE& item)
+	{
+		bool ret = false;
+
+		if (numberElements > 0)
+		{
+			item = data[--numberElements];
+			ret = true;
+		}
+		return ret;
+	}
+
+	void Delete()
+	{
+		if (data != NULL)
+			delete[] data;
 	}
 };
 

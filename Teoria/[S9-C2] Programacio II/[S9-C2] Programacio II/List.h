@@ -77,7 +77,8 @@ public:
 			{
 				tmp = tmp->next;
 			}
-			tmp; // <======================
+			tmp->next = newNode; 
+			newNode->next = NULL;
 		}
 		size++;
 	}

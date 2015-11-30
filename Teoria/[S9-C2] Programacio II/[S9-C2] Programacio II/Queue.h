@@ -14,9 +14,14 @@ public:
 		list.PopFront();
 	}
 	
-	Node<TYPE>& PushB()
+	void PushB(TYPE& data)
 	{
-		return list.PushBack();
+		return list.PushBack(data);
+	}
+
+	bool Empty()
+	{
+		return list.Empty();
 	}
 
 };
