@@ -22,22 +22,7 @@ public:
 		data = new TYPE[memoryCapacity];
 	}
 
-	void Push(Node& info)
-	{
-		if (start == NULL)
-		{
-			start = info;
-		}
-		else if ()
-		{
-			info->next->start;
-			start->prev = info;
-			start = info;
-		}
-		size++;
-	}
-
-	bool Empty()
+	bool Empty() const
 	{
 		return numberElements == 0;
 	}
@@ -60,6 +45,12 @@ public:
 			data = tmp;
 		}
 		data[numberElements++] = element;
+	}
+
+	TYPE& Peek() const
+	{
+		if (numberElements > NULL)
+			return data[numberElements];
 	}
 
 	bool PopBack(TYPE& item)
