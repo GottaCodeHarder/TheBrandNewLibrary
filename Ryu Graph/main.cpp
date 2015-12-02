@@ -9,6 +9,7 @@
 #define JUMP_TIME 3000
 #define PUNCH_TIME 1000
 
+
 enum ryu_states
 {
 	ST_UNKNOWN,
@@ -199,7 +200,6 @@ ryu_states process_fsm(p2Qeue<ryu_inputs>& inputs)
 				{
 					case IN_JUMP_FINISH: state = ST_IDLE; break;
 					case IN_X: state = ST_PUNCH_NEUTRAL_JUMP; punch_timer = SDL_GetTicks(); break;
-					case IN_JUMP_AND_CROUCH: state = ST_UNKNOWN; break;
 				}
 			}
 			break;
@@ -210,7 +210,6 @@ ryu_states process_fsm(p2Qeue<ryu_inputs>& inputs)
 				{
 					case IN_JUMP_FINISH: state = ST_IDLE; break;
 					case IN_X: state = ST_PUNCH_FORWARD_JUMP; punch_timer = SDL_GetTicks(); break;
-					case IN_JUMP_AND_CROUCH: state = ST_UNKNOWN; break;
 				}
 			}
 			break;
@@ -221,7 +220,6 @@ ryu_states process_fsm(p2Qeue<ryu_inputs>& inputs)
 				{
 					case IN_JUMP_FINISH: state = ST_IDLE; break;
 					case IN_X: state = ST_PUNCH_BACKWARD_JUMP; punch_timer = SDL_GetTicks(); break;
-					case IN_JUMP_AND_CROUCH: state = ST_UNKNOWN; break;
 				}
 			}
 			break;
@@ -271,6 +269,7 @@ ryu_states process_fsm(p2Qeue<ryu_inputs>& inputs)
 				{
 					case IN_CROUCH_UP: state = ST_IDLE; break;
 					case IN_X: state = ST_PUNCH_CROUCH; punch_timer = SDL_GetTicks(); break;
+					case IN_JUMP_AND_CROUCH: state = ST_IDLE; break;
 				}
 			}
 			break;
@@ -278,7 +277,7 @@ ryu_states process_fsm(p2Qeue<ryu_inputs>& inputs)
 			{
 				switch(last_input)
 				{
-					case IN_PUNCH_FINISH: state = ST_CROUCH; break;
+					case IN_PUNCH_FINISH: state = ST_IDLE; break;
 				}
 			}
 			break;
