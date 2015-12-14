@@ -1,0 +1,49 @@
+#ifndef __GRAPH_H__
+#define __GRAPH_H__
+#include "defs.h"
+
+template <class TYPE>
+class Graph
+{
+public:
+	struct Node
+	{
+		TYPE data;
+		DynArray<Node*> links;
+
+		Node(TYPE data) : data(data){}
+
+		void AddLink(Node* nodeTo)
+		{
+			links.Pushback(nodeTo);
+		}
+
+		Node PopLink()
+		{
+			return links.PopBack();
+		}
+	};
+
+public:
+	Node Estat;
+	List<Node*> nodes;
+	
+	Graph(){ Estat = NULL; }
+
+	Node AddNode(TYPE* data)
+	{
+		Node NewNode = new Node(data);
+		nodes.PushBack(NewNode);
+	}
+
+	bool Pathfinding(TYPE* Node)
+	{
+		bool ret = false;
+
+		return ret;
+	}
+};
+
+//A->B->D->C->G  C->A C->B E->F F->E
+
+#endif

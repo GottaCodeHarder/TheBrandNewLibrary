@@ -8,15 +8,16 @@ using namespace std;
 
 int main()
 {
-	int test = 3;
-	Stack<int> stackTest;
+	Graph<int> AAA;
 
-	for (int i = 0; i < 10; i++)
-	{
-		stackTest.PushBack(test);
-	}
+	Graph<int>::Node nodeA = AAA.CreateNode(1);
+	Graph<int>::Node nodeB = AAA.CreateNode(2);
+	Graph<int>::Node nodeC = AAA.CreateNode(3);
+	AAA.AddNode(nodeA);
+	AAA.AddNode(nodeB);
+	AAA.AddNode(nodeC);
 
-	printf("%i \n", stackTest);
+	printf("%i" ,AAA);
 	system("PAUSE");
 	return 0;
 }

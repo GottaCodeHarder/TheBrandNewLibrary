@@ -1,0 +1,65 @@
+#ifndef __GRAPH_H__
+#define __GRAPH_H__
+#include "defs.h"
+
+template <class TYPE>
+class Graph
+{
+public:
+	struct Node
+	{
+		TYPE data;
+
+		Node(TYPE data) : data(data){}
+
+		void AddLink(Node* nodeTo)
+		{
+			links.Pushback(nodeTo);
+		}
+
+		Node PopLink()
+		{
+			return links.PopBack();
+		}
+	};
+
+	DynArray<Node*> links;
+	List<Node*> nodes;
+
+public:
+	uint total = NULL;
+	
+	Graph(){}
+
+	Node CreateNode()
+	{
+		return Node NewNode = new Node(data);
+		total++;
+	}
+
+	void AddNode(Node Estat)
+	{
+		nodes.PushBack(Estat);
+	}
+
+	bool Pathfinding(TYPE* NodeI, TYPE* NodeF)
+	{
+		bool ret = false;
+		
+		PathRecursiu(NodeF, 0);
+
+		return ret;
+	}
+
+	bool PathRecursiu(TYPE* NodeF, uint index)
+	{
+		index++;
+		if (index > total)
+			return false;
+		if (NodeF == NodeActual)
+			return true;
+		PathRecursiu(NodeF, index);
+	}
+};
+
+#endif
