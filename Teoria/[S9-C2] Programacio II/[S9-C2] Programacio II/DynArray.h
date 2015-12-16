@@ -1,6 +1,6 @@
 #ifndef __DYNARRAY_H__
 #define __DYNARRAY_H__
-#include "defs.h" // MACROS definides a dintre
+#include "defs.h"
 #define MEMORY_CHUNK 16
 
 template <class DATA>
@@ -18,7 +18,7 @@ public:
 
 	DynArray(const DynArray& Array) : numberElements(Array.numberElements)
 	{
-		memoryCapacity = MAX(MEMORY_CHUNK, Array.memoryCapacity);
+		memoryCapacity = (MEMORY_CHUNK > Array.memoryCapacity) ? (MEMORY_CHUNK) : (Array.memoryCapacity);
 		data = new DATA[memoryCapacity];
 		memcpy(data, Array.data, Array.numberElements*sizeof(DATA));
 	}
@@ -89,7 +89,7 @@ public:
 
 	const DATA& operator [] (uint position) const
 	{
-		assert(position < numberElements);
+		//assert(position < numberElements);
 		return data[position];
 	}
 
@@ -116,6 +116,14 @@ public:
 
 		// Code
 	}
+
+	void Swap(uint position, uint position2)
+	{
+		DATA tmp = data[position];
+		data[position] = data[position2];
+		data[position2] = tmp;
+	}
+
 	// new y delete reserven memoria, no la toquen (posar valors a 0).
 	// operador [],  operador =, pop_back (en el moment que el treus, l'estas borrant), shrink_to_fit() (si ens sobra memoria, hem de destruir el lo que sobra, fer un new), flip ( ABCDE => EDCBA ), insert (pos, data) (ABCDE => ABXCDE)
 };

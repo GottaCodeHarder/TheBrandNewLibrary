@@ -67,6 +67,7 @@
     <ClInclude Include="defs.h" />
     <ClInclude Include="DynArray.h" />
     <ClInclude Include="Graph.h" />
+    <ClInclude Include="BubbleSort.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="Stack.h" />
